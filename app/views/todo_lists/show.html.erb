@@ -1,0 +1,16 @@
+<!-- <p style="color: green"></p> -->
+
+<!-- <%= render @todo_list %> -->
+
+<div class="container">
+<div class="jumbotron" style="background-color: #dbdbdb; height:50vh;color: black; box-shadow: 5px 10px whitesmoke;">
+  <h1 class="display-4"><%=@todo_list.title%></h1>
+  <p class="lead"><%=@todo_list.desc%></p>
+  <hr class="my-4">
+  <%= link_to "Edit this Todo", edit_todo_list_path(@todo_list) ,class:"btn btn-secondary btn-sm" %> |
+  <%= link_to "Back to Todo list", todo_lists_path,class:"btn btn-secondary btn-sm" %>
+  <%= button_to "Remove this todo ", @todo_list, method: :delete ,class:"btn btn-danger btn-sm my-2" %>
+ 
+</div>
+
+</div>

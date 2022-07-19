@@ -1,0 +1,13 @@
+<div class="container">
+
+  <h1 class="text-center">Editing todo list</h1>
+</div>
+
+<%= render "form", todo_list: @todo_list ,class:"form-control"%>
+
+<br>
+
+<div class="container">
+  <%= link_to "Show this todo list", @todo_list , class:"btn btn-secondary" %> |
+  <%= link_to "Back to todo lists", todo_lists_path, class:"btn btn-secondary"  %>
+</div>
