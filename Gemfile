@@ -62,7 +62,7 @@ end
 group :production do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'pg', '~> 1.4', '>= 1.4.1'
-  # gem 'rails_12factor', '~> 0.0.3'
+  gem 'rails_12factor'
 end
 
 group :test do
