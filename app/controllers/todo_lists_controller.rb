@@ -1,6 +1,6 @@
 class TodoListsController < ApplicationController
   before_action :set_todo_list, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /todo_lists or /todo_lists.json
   def index
     @todo_lists = TodoList.all
@@ -65,6 +65,6 @@ class TodoListsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def todo_list_params
-      params.require(:todo_list).permit(:title, :desc)
+      params.require(:todo_list).permit(:title, :desc, :user_id)
     end
 end

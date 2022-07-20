@@ -1,38 +1,40 @@
-<!--  <p style="color: green"><%= notice %></p> -->
+<% if user_signed_in? %>
   <h1 class="text-center">Your Todos:</h1>
-  <!-- <div id="todo_lists">  
-  <% @todo_lists.each do |todo_list| %>
-  <%= render todo_list %>
-  <p>
-    <%= link_to "Show this todo list", todo_list %>
-  </p>
-  <% end %>
-</div>
- -->
+
   <div class="container my-5">
 
-    <table class="table  table-stripped table-bordered table-hover">
-      
+    <table class="table table-stripped table-bordered table-hover">
+      <thead class = "table-dark">
+        <tr>
+          <!-- <th scope="col">#</th> -->
+          <th scope="col">Title</th>
+          <th scope="col">Actions</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
 
       <% @todo_lists.each do |todo_list| %>
 
-
+        <% if todo_list.user == current_user %>
         <tr>
           <td>
             <%= todo_list.title %>
           </td>
-          <td><%= todo_list.desc %></td>
+          <!-- <td><%= todo_list.desc %></td> -->
           <td>
-            <%= link_to 'Show' , todo_list, class:"btn btn-primary" %>
+            <%= link_to 'Show desc' , todo_list, class:"btn btn-primary" %>
           </td>
           <td>
+          <%= button_to 'Remove' , todo_list, :confirm=> 'Are you sure?', :method => :delete ,class:"btn btn-danger"%>
+          </td>
+          <!-- <td>
             <%= link_to 'Edit' , edit_todo_list_path(todo_list),class:"btn btn-primary" %>
           </td>
-          <td>
-            <%= button_to 'Remove' , todo_list, :confirm=> 'Are you sure?', :method => :delete ,class:"btn btn-danger"%>
-          </td>
+         -->
         </tr>
-
+        <% else %>
+        
+        <% end %>
         <% end %>
     </table>
 
@@ -40,3 +42,10 @@
 
     <%= link_to 'New Todo' , new_todo_list_path, class:"btn btn-secondary" %>
   </div>
+<% else %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  You are not signed in so you cannot access or make ToDos
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+</div>
+<% end %>
