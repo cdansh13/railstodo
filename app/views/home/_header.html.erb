@@ -9,7 +9,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
-          <% if user_is_signedin? %>
+          <% if user_signed_in? %>
           <li class="nav-item">
             <a class="nav-link" href="/todo_lists">My todos</a>
           </li>
@@ -23,6 +23,7 @@
             <%= button_to "Sign Out",destroy_user_session_path,method: :delete,class:"btn btn-danger"%>
             
           </li>
+          <% else %>
           <li class="nav-item">
             <%= link_to "Sign Up",new_user_registration_path,class:"nav-link" %>
           </li>
@@ -31,8 +32,6 @@
               <%= link_to "Sign In",new_user_session_path,class:"nav-link"%>
             
           </li>
-          <% else %>
-          You are not signed in
           <% end %>
         </ul>
         <form class="d-flex" role="search">
